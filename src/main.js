@@ -1,3 +1,5 @@
+import "@storefront-ui/vue/styles.scss"
+
 import Plugin from "./Plugin.vue";
 
 if (process.env.NODE_ENV == "development") {
