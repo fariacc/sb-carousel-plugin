@@ -20,31 +20,34 @@
             @click="go('next')"
           />
         </template>
-        <!-- for some reason, it asks to register the SfCarouselItem component -->
-        <!-- so it's not working -->
-        <!-- <SfCarouselItem
-          v-for="(product, index) in model.products"
-          :key="index"  
-        > -->
-        <SfProductCard
+        <div
           v-for="(product, index) in model.products"
           :key="index"
-          :image="product.image"
-          :title="product.name"
-          :link="`http://product.com/${product.name}`"
-          :regular-price="product.price.regular"
-          :special-price="product.price.special"
-          :score-rating="product.rating.score"
-          :max-rating="product.rating.max"
-          :is-on-wishlist="product.isOnWishlist"
-          show-add-to-cart-button
-          :reviews-count="reviews"
-          :badge-label="badgeLabel"
-          :badge-color="badgeColor"
-          wishlist-icon="heart"
-          @click.native="selectItem"
-        />
-        <!-- </SfCarouselItem> -->
+        >
+          <!-- for some reason, it asks to register the SfCarouselItem component -->
+          <!-- so it's not working -->
+          <!-- <SfCarouselItem
+            v-for="(product, index) in model.products"
+            :key="index"  
+          > -->
+          <SfProductCard
+            :image="product.image"
+            :title="product.name"
+            :link="`http://product.com/${product.name}`"
+            :regular-price="product.price.regular"
+            :special-price="product.price.special"
+            :score-rating="product.rating.score"
+            :max-rating="product.rating.max"
+            :is-on-wishlist="product.isOnWishlist"
+            show-add-to-cart-button
+            :reviews-count="reviews"
+            :badge-label="badgeLabel"
+            :badge-color="badgeColor"
+            wishlist-icon="heart"
+            @click.native="selectItem"
+          />
+          <!-- </SfCarouselItem> -->
+        </div>
       </SfCarousel>
       <button class="uk-button uk-width-1-1 uk-margin-small-top" @click.prevent="openSelection">Manage products</button>
     </div>
@@ -71,6 +74,9 @@
         </div>
         <div class="integration-items">
           <div v-for="(product, index) in products" :key="index">
+            <p>{{ product.name }}</p>
+            <p>{{ product.price.regular }}</p>
+            <p>{{ product.rating.score }}</p>
             <SfProductCard
               :image="product.image"
               :title="product.name"
@@ -128,8 +134,8 @@ export default {
           name: 'Cream Beach Bag',
           image:
             'https://static.netshoes.com.br/produtos/camisa-selecao-italia-home-2021-sn-torcedor-puma-masculina/52/NWG-0394-852/NWG-0394-852_zoom1.jpg',
-          price: { regular: '$ 50.00 ', special: '$ 25.00 ' },
-          rating: { max: 5, score: 4 },
+          price: { regular: '$ 13.00 ', special: '$ 25.00 ' },
+          rating: { max: 5, score: 2 },
           isOnWishlist: true,
           reviews: 8,
           badgeLabel: '-50%',
@@ -139,7 +145,18 @@ export default {
           name: 'Cream Beach Bag',
           image:
             'https://static.netshoes.com.br/produtos/camisa-selecao-italia-home-2021-sn-torcedor-puma-masculina/52/NWG-0394-852/NWG-0394-852_zoom1.jpg',
-          price: { regular: '$ 50.00 ' },
+          price: { regular: '$ 23.00 ' },
+          rating: { max: 5, score: 3 },
+          isOnWishlist: false,
+          reviews: 8,
+          badgeLabel: '',
+          badgeColor: 'color-primary',
+        },
+        {
+          name: 'Cream Beach Bag',
+          image:
+            'https://static.netshoes.com.br/produtos/camisa-selecao-italia-home-2021-sn-torcedor-puma-masculina/52/NWG-0394-852/NWG-0394-852_zoom1.jpg',
+          price: { regular: '$ 59.00 ' },
           rating: { max: 5, score: 4 },
           isOnWishlist: false,
           reviews: 8,
@@ -150,19 +167,8 @@ export default {
           name: 'Cream Beach Bag',
           image:
             'https://static.netshoes.com.br/produtos/camisa-selecao-italia-home-2021-sn-torcedor-puma-masculina/52/NWG-0394-852/NWG-0394-852_zoom1.jpg',
-          price: { regular: '$ 50.00 ' },
-          rating: { max: 5, score: 4 },
-          isOnWishlist: false,
-          reviews: 8,
-          badgeLabel: '',
-          badgeColor: 'color-primary',
-        },
-        {
-          name: 'Cream Beach Bag',
-          image:
-            'https://static.netshoes.com.br/produtos/camisa-selecao-italia-home-2021-sn-torcedor-puma-masculina/52/NWG-0394-852/NWG-0394-852_zoom1.jpg',
-          price: { regular: '$ 50.00 ', special: '$ 45.00' },
-          rating: { max: 5, score: 4 },
+          price: { regular: '$ 9.99 ', special: '$ 45.00' },
+          rating: { max: 5, score: 5 },
           isOnWishlist: false,
           reviews: 8,
           badgeLabel: '-10%',
@@ -172,8 +178,8 @@ export default {
           name: 'Cream Beach Bag',
           image:
             'https://static.netshoes.com.br/produtos/camisa-selecao-italia-home-2021-sn-torcedor-puma-masculina/52/NWG-0394-852/NWG-0394-852_zoom1.jpg',
-          price: { regular: '$ 50.00 ' },
-          rating: { max: 5, score: 4 },
+          price: { regular: '$ 150.00 ' },
+          rating: { max: 5, score: 1 },
           isOnWishlist: false,
           reviews: 8,
           badgeLabel: '',
@@ -183,7 +189,7 @@ export default {
           name: 'Cream Beach Bag',
           image:
             'https://static.netshoes.com.br/produtos/camisa-selecao-italia-home-2021-sn-torcedor-puma-masculina/52/NWG-0394-852/NWG-0394-852_zoom1.jpg',
-          price: { regular: '$ 50.00 ' },
+          price: { regular: '$ 88.00 ' },
           rating: { max: 5, score: 4 },
           isOnWishlist: false,
           reviews: 8,
